@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  meme-sidecar:
+    build:
+      context: ./meme_sidecar
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  calculator:
+    build:
+      context: ./calculator
+    environment:
+      - MEME_SIDECAR_URL=http://meme-sidecar:8000
+    depends_on:
+      - meme-sidecar
+    stdin_open: true
+    tty: true
