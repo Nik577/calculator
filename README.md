@@ -1,10 +1,10 @@
 # Калькулятор
 
-Консольное приложение "Калькулятор", разработанное на Python.
+
 
 ## Запуск (Docker)
 
-Для начала скачайте репозиторий на свой компьютер:
+
 ```bash
 git clone https://github.com/Nik577/calculator.git
 cd calculator
@@ -23,7 +23,7 @@ cd meme_sidecar
 pip install -r requirements.txt
 uvicorn main:app --port 8000
 ```
-2. В другом терминале запустите калькулятор:
+
 ```bash
 cd calculator
 python main.py
