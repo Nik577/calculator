@@ -45,18 +45,18 @@ def fetch_meme() -> str:
     import requests
     SIDECAR_URL = os.getenv("MEME_SIDECAR_URL", "http://localhost:8000")
     try:
-        response = requests.get(f"{SIDECAR_URL}/meme", timeout=2)
+        response = requests.get(f"{SIDECAR_URL}/meme", timeout=2, proxies={"http": None, "https": None})
         if response.status_code == 200:
             return response.json().get("meme", "")
-    except Exception:
-        pass
+    except Exception as e:
+        return f"( ͡° ͜ʖ ͡°)\nУпс, мемы не подвезли. (Ошибка: {e})"
     return "( ͡° ͜ʖ ͡°)\nУпс, мемы не подвезли."
 
 def fetch_3d_art(number: str) -> str:
     import requests
     SIDECAR_URL = os.getenv("MEME_SIDECAR_URL", "http://localhost:8000")
     try:
-        response = requests.get(f"{SIDECAR_URL}/3d/{number}", timeout=2)
+        response = requests.get(f"{SIDECAR_URL}/3d/{number}", timeout=2, proxies={"http": None, "https": None})
         if response.status_code == 200:
             return response.json().get("art", number)
     except Exception:
